@@ -1,0 +1,49 @@
+<%- include("partials/header") -%>
+
+
+<div class="form-container">
+  <h1 class="publish-heading">Post</h1>
+  <form action="/compose" method="post" enctype="multipart/form-data">
+    <div class="mb-3 form-group">
+      <label class="form-label">Title</label>
+      <input name="title" class="form-control" type="text">
+    </div>
+    <div class="mb-3 form-group">
+      <label class="form-label">Post</label>
+      <textarea style="overflow:hidden" name="post" id="post" class="form-control" rows="4"></textarea>
+    </div>
+    <div class="mb-3 form-group">
+      <label class="form-label">Image</label>
+      <div class="file-input-container">
+        <label class="file-input-button">Choose File</label>
+        <input name="image" class="file-input" type="file" accept="image/*">
+      </div>
+    </div>
+    <div class="publish-button">
+      <button type="submit" class="btn btn-primary publish-button">Publish</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  // Function to auto-expand textarea while typing
+  function adjustTextareaHeight(textarea) {
+    textarea.style.height = "auto";
+    textarea.style.height = (textarea.scrollHeight) + "px";
+  }
+
+  // Attach event listener to the textarea
+  const postTextarea = document.getElementById("post");
+  postTextarea.addEventListener("input", function() {
+    adjustTextareaHeight(postTextarea);
+  });
+
+  // Call the function on page load
+  adjustTextareaHeight(postTextarea);
+</script>
+
+
+
+
+
+<%- include("partials/footer") -%>

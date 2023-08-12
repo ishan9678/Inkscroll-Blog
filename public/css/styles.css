@@ -1,0 +1,563 @@
+body {
+  overflow-x: hidden;
+}
+
+.title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-container {
+  flex: 1;
+}
+
+.search-container {
+  margin-left: 20px;
+  /* Add some space between "Our Stories" and the search bar */
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.posted-by,
+.date {
+  margin: 0;
+}
+
+.read-more::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  /* Adjust the position of the underline */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: blue;
+  transform: scaleX(0);
+  /* Set initial scale to 0 for the underline */
+  transform-origin: left;
+  transition: transform 0.5s, color 0.5s;
+}
+
+.read-more {
+  color: black;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  transition: color 0.5s;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  color: red;
+  text-decoration: none;
+}
+
+.read-more:hover::before {
+  transform: scaleX(1);
+  /* Scale up the underline on hover */
+}
+
+.post-container {
+  width: 70%;
+  margin: 0 auto;
+  margin: 0;
+  margin-left: 165px;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Set the maximum width for the image */
+  width: 100%;
+  /* Ensure the image fills the container width */
+  margin: 0 auto;
+  /* Center the image */
+  overflow: hidden;
+  /* Hide the overflow to create the fixed frame effect */
+}
+
+.image-container img {
+  width: 65%;
+  /* Make the image fill 70% of the container width */
+  height: auto;
+  /* Maintain the aspect ratio */
+}
+
+.comment {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-date {
+  margin-left: 10px;
+  /* Add some spacing between the comment content and the date */
+}
+
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
+}
+
+.navbar-nav li a:hover {
+  color: #1abc9c !important;
+}
+
+.heading {
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.footer-padding {
+  padding-bottom: 60px;
+}
+
+.footer {
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #1abc9c;
+}
+
+.footer p {
+  margin-top: 25px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.post-image-wrapper {
+  position: relative;
+  /* Needed for positioning the zoomed image */
+  overflow: hidden;
+  /* Hide the overflowing parts of the zoomed image */
+  width: 300px;
+  /* Set the desired width for the images */
+  height: 200px;
+}
+
+.post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.post-title {
+  color: black;
+  /* Set the default title text color */
+  transition: color 0.3s ease;
+  /* Apply transition to change the title text color */
+  margin-top: 10px;
+}
+
+.post:hover .post-image {
+  transform: scale(1.05);
+}
+
+.post:hover .post-title {
+  color: red;
+  /* Change the title text color on hover */
+}
+
+.post-expanded-content {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.post {
+  width: 30%;
+  /* Adjust the width as needed */
+  margin-bottom: 40px;
+  border: 1px solid #ccc;
+  /* Add borders or styles as needed */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-image-wrapper {
+  width: 100%;
+  height: 200px;
+  /* Set the desired height for the image */
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-content {
+  flex: 1;
+  /* Make the content container take the available space */
+}
+
+.post-title {
+  margin-bottom: 10px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.posted-by,
+.date {
+  margin: 0;
+}
+
+/* CSS for the profile section */
+/* CSS for the profile section */
+.profile {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 40px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.profile-image img {
+  width: 125px;
+  height: 125px;
+  /* This ensures the image maintains its aspect ratio */
+  border-radius: 50%;
+}
+
+.total-posts,
+.total-likes {
+  display: inline-block;
+}
+
+.stats {
+  border-bottom-width: 20px;
+  padding-bottom: 85px;
+  padding-right: 0px;
+  margin-left: 0px;
+}
+
+.total-posts {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.user-details h2 {
+  font-size: 20px;
+}
+
+.read-more {
+  margin-top: 10px;
+}
+
+/* Your CSS styles */
+.red-heart {
+  color: red;
+}
+
+/* Styling for comments */
+.comment {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-info {
+  margin-bottom: 10px;
+}
+
+.comment-info strong {
+  font-weight: bold;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #999;
+}
+
+.comment textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.comment button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.comment button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for the "Add Comment" box */
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+}
+
+/* Style for the textarea */
+.comment-textarea {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  resize: vertical;
+  transition: height 0.3s;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Style for the submit button */
+.comment-submit {
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+}
+
+/* Style for the textarea */
+.comment-textarea {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  resize: vertical;
+  transition: height 0.3s;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.post-container {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.expanded-heading h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+}
+
+.post-expanded-content {
+  line-height: 1.6;
+}
+
+.likes-and-date {
+  margin-top: 10px;
+}
+
+.likes-and-date p {
+  font-size: 14px;
+  color: #888;
+}
+
+.expanded-post {
+  text-align: center;
+}
+
+.like-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.post {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.post-profile {
+  text-align: center;
+}
+
+.search-container {
+  text-align: center;
+}
+
+/* Style for the search input */
+.search-container input[type="text"] {
+  padding: 10px;
+  width: 245px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Style for the search button */
+.search-container button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Adjust the button appearance on hover */
+.search-container button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 40px;
+}
+
+/* Style for form label */
+.form-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style for form input and textarea */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* Style for form button */
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Adjust the button appearance on hover */
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Style for the file input container */
+.file-input-container {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* Style for the file input button */
+.file-input-button {
+  font-size: 12px;
+  padding: 6px 11px;
+  background-color: #1abc9c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style for the actual file input */
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.publish-button {
+  border-radius: 5px;
+  text-align: center;
+}
+
+.publish-heading {
+  margin-top: 10px;
+  text-align: center;
+}

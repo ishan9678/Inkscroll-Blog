@@ -1,0 +1,53 @@
+<%- include("partials/header") -%>
+
+<div class="profile">
+  <div class="profile-header">
+    <div class="user-details">
+      <div class="profile-image">
+        <img src="/images/profile.svg" alt="profile photo" style="width: 60%;">
+      </div>
+      <h2><strong><%= user.name %></strong></h2>
+      <p><strong>Email:</strong> <%= user.email %></p>
+    </div>
+    <div class="stats">
+      <div class="total-posts">
+        <p><strong>Posts</strong></p>
+        <i class="fas fa-pencil-alt"></i> <!-- Font Awesome Icon -->
+        <%= totalPosts %>
+      </div>
+      <div class="total-likes">
+        <p><strong>Likes</strong></p>
+        <i class="fas fa-heart"></i> <!-- Font Awesome Icon for a filled heart -->
+        <%= totalLikes %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h3 style="margin-bottom: 20px;">Posts by <%= user.name %>
+</h3>
+<div class="posts">
+  <% userPosts.forEach((post)=> { %>
+  <div class="post post-profile">
+    <h4>
+      <strong><%= post.title %></strong>
+    </h4>
+    <div class="post-image-wrapper">
+      <% if (post.image && post.image.length> 0) { %>
+      <img class="post-image" src="data:image/jpeg;base64, <%= post.image.toString('base64') %>" alt="Blog Post Image">
+      <% } %>
+    </div>
+
+    <%= post.content.substring(0, 806) %>... <p><a class="read-more" href="/posts/<%= encodeURIComponent(post.title.replace(/\s/g, '-')) %>"><strong>READ MORE</strong></a></p>
+
+
+    <p><i class="fas fa-heart red-heart"></i>&nbsp; <%= post.likes %></p>
+
+    <p>Posted on <%= post.createdAt.toDateString() %>
+    </p>
+  </div>
+  <% }) %>
+</div>
+
+<%- include("partials/footer") -%>

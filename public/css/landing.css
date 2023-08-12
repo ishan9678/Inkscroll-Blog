@@ -1,0 +1,122 @@
+* {
+  overflow-y: hidden;
+}
+
+body {
+  background-color: #f8f9fa;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  border: none;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.btn-dark {
+  margin-top: 10px;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.btn-dark:hover {
+  background-color: #1abc9c;
+  color: white;
+}
+
+h1 {
+  margin-left: 20px;
+}
+
+.login-cont {
+  margin-top: 135px;
+  border-radius: 5px;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.jumbotron {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 50px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.jumbotron i {
+  color: #343a40;
+}
+
+.jumbotron h1 {
+  font-size: 3.5rem;
+  margin-top: 20px;
+  color: #343a40;
+}
+
+.jumbotron p {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #6c757d;
+}
+
+.jumbotron hr {
+  background-color: #343a40;
+  margin: 30px auto;
+  width: 60px;
+  height: 3px;
+  border: none;
+}
+
+.jumbotron a.btn-light,
+.jumbotron a.btn-dark {
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+.jumbotron a.btn-light {
+  background-color: #ffffff;
+  border-color: #343a40;
+  color: #343a40;
+  margin-right: 10px;
+}
+
+.jumbotron a.btn-light:hover {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+.jumbotron a.btn-dark {
+  background-color: #343a40;
+  border-color: #343a40;
+  color: #ffffff;
+}
+
+.jumbotron a.btn-dark:hover {
+  background-color: #23272b;
+  border-color: #23272b;
+}

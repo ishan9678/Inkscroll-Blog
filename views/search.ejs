@@ -1,0 +1,32 @@
+<%- include("partials/header") -%>
+
+<div class="title-bar">
+  <div>
+    <h2 class="heading"><strong>Our Stories</strong></h2>
+    <form action="/search" method="GET">
+      <input type="text" name="q" placeholder="Search posts by title">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</div>
+
+<div class="search-results">
+  <% if (posts && posts.length > 0) { %>
+  <% posts.forEach(post => { %>
+  <div class="post">
+    <h2><%= post.title %></h2>
+    <% if (post.image && post.image.length > 0) { %>
+    <img src="data:image/jpeg;base64, <%= post.image.toString('base64') %>" alt="Blog Post Image">
+    <% } %>
+    <p><strong>Posted by <a href="/user/<%= post.user._id %>"><%= post.user.username %></a></strong></p>
+    <p><%= post.content %></p>
+    <p>Likes: <%= post.likes %></p>
+    <p>Posted on <%= post.createdAt.toDateString() %></p>
+  </div>
+  <% }) %>
+  <% } else { %>
+  <p>No posts found.</p>
+  <% } %>
+</div>
+
+<%- include("partials/footer") -%>

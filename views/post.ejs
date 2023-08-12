@@ -1,0 +1,140 @@
+<%- include("partials/header") -%>
+
+<div class="post-container">
+  <div class="expanded-post">
+    <div class="expanded-heading">
+      <h2>
+        <strong>
+          <%= title %>
+        </strong>
+      </h2>
+    </div>
+    <div class="image-container">
+      <% if (image && image.length > 0) { %>
+      <img src="data:image/jpeg;base64, <%= image.toString('base64') %>" alt="Blog Post Image">
+      <% } %>
+    </div>
+    <p><strong>Posted by <a href="/user/<%= user._id %>">
+          <%= user.username %>
+        </a></strong></p>
+    <div class="post-expanded-content">
+      <p>
+        <%= content %>
+      </p>
+    </div>
+    <div class="likes-and-date">
+      <form action="/like/<%= _id %>" method="POST">
+        <button class="like-button" type="submit"><i class="fas fa-heart red-heart"></i></i>
+          <%= likes %>
+        </button>
+      </form>
+      <p>Posted on <%= createdAt.toDateString() %>
+      </p>
+    </div>
+  </div>
+
+
+
+  <h3>Comments</h3>
+  <div class="comments">
+    <% comments.forEach(comment=> { %>
+    <div class="comment">
+      <div class="comment-info" style="width: 80%; word-wrap: break-word;">
+        <p style="margin: 0;">
+          <!-- Set margin to 0 to remove any extra space -->
+          <strong><a href="/user/<%= comment.user._id %>">
+              <%= comment.user.username %>
+            </a>:</strong>
+          <%= comment.content %>
+        </p>
+      </div>
+      <div class="comment-date">
+        <p>
+          <%= comment.createdAt.toLocaleString('en-US', { month: 'short' , day: 'numeric' , year: 'numeric' ,
+              hour: 'numeric' , minute: 'numeric' , hour12: true }) %>
+        </p>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+
+
+  <div class="comment-container">
+    <form id="comment-form" action="/posts/<%= _id %>/comments" method="POST">
+      <div class="comment-textarea-container">
+        <textarea id="comment-textarea" name="comment" class="comment-textarea" rows="1" required onfocus="if (this.value === 'Add a comment...') this.value = ''" onblur="if (this.value === '') this.value = 'Add a comment...'">Add a comment...</textarea>
+      </div>
+      <button type="submit" class="comment-submit">Comment</button>
+    </form>
+  </div>
+
+
+  <script>
+    function adjustTextareaHeight(textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = (textarea.scrollHeight) + "px";
+    }
+
+    function submitComment() {
+      const commentTextarea = document.querySelector("#comment-textarea");
+      const commentContent = commentTextarea.value.trim();
+      if (commentContent !== "" && commentContent !== "Add a comment...") {
+        const formData = new FormData();
+        formData.append('comment', commentContent);
+
+        fetch(`/posts/<%= _id %>/comments`, {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => {
+            if (response.ok) {
+              // Clear the textarea and reset its height
+              commentTextarea.value = "Add a comment...";
+              adjustTextareaHeight(commentTextarea);
+
+              // Update the comments variable
+              comments.push(response.json());
+
+              // Reload the page to see the new comment
+              location.reload();
+            } else {
+              console.error("Error submitting comment:", response.statusText);
+            }
+          })
+          .catch(error => {
+            console.error("Error submitting comment:", error);
+          });
+      }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const commentTextarea = document.querySelector("#comment-textarea");
+      const commentSubmitButton = document.querySelector("#comment-submit");
+
+      commentTextarea.addEventListener("input", function() {
+        adjustTextareaHeight(commentTextarea);
+
+        // Check if the textarea is overflowing
+        const textareaOverflow = commentTextarea.scrollHeight > commentTextarea.clientHeight;
+
+        // If the textarea is overflowing, then wrap the text
+        if (textareaOverflow) {
+          commentTextarea.innerHTML = commentTextarea.innerHTML.replace(/\n/g, '<br>');
+        }
+      });
+
+      // Listen for the submit event on the form
+      commentForm.addEventListener("submit", submitComment);
+
+      // Initial adjustment of textarea height
+      adjustTextareaHeight(commentTextarea);
+    });
+  </script>
+
+
+</div>
+
+
+
+<%- include("partials/footer") -%>

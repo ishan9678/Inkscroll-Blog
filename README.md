@@ -60,8 +60,6 @@ https://zany-hare-boot.cyclic.app
 2. Install dependencies:
 
    ```sh
-    Copy code
-    cd Inkscroll-Blog
     npm install
 
 3. Start development server:
